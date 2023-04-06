@@ -39,14 +39,15 @@ body {
 #watchList {
   background-color: burlywood;
   text-align: center;
-  padding: 20px;
+  padding: 5px;
   width: 300px;
   height: auto;
 }
 
 #movieInfo{
-  width: 1000px;
+  width: 1100px;
   height: auto;
+  padding: 5px;
   text-align: center;
   background-color: rgb(153, 151, 148);
 }
