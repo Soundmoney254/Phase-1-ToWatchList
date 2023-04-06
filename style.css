@@ -1,6 +1,6 @@
 body {
     font-family: Tahoma, sans-serif;
-    margin: 100px 100px;
+    margin: 84px 84px;
   }
 
   .header {
@@ -8,5 +8,49 @@ body {
     padding: 20px 20px;
     text-align: center;
   }
-  
-  
+
+  input {
+    padding: 2px;
+    border: 2px solid gray;
+    border-radius: 3px;
+    width: 300px;
+    height: 25px;
+    margin-bottom: 10px;
+  }
+
+  #yearReleased:invalid {
+    border-color: red;
+  }
+
+  #yearReleased:valid {
+    border-color: white;
+  }
+
+#submit, #clear {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: greenyellow;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#watchList {
+  background-color: burlywood;
+  text-align: center;
+  padding: 20px;
+  width: 300px;
+  height: auto;
+}
+
+#movieInfo{
+  width: 1000px;
+  height: auto;
+  text-align: center;
+  background-color: rgb(153, 151, 148);
+}
+
+#watchList, #movieInfo {
+  display: inline-block;
+}
