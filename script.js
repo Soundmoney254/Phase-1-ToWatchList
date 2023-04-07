@@ -4,7 +4,7 @@ const yearReleasedInput = document.querySelector("#yearReleased");
 const movieInfo = document.querySelector("#movieInfo");
 const searchForm = document.querySelector("#searchForm");
 const movieTrailer = document.querySelector("#movieTrailer");
-const apiKey = 'k_k7rhb843';
+const apiKey = 'k_q46p3x9h';
 
 //A function for rendering a movies Info after fetching the data
 async function fetchAndDisplay (movieNameString, yearReleasedNumber){
@@ -39,18 +39,29 @@ async function fetchAndDisplay (movieNameString, yearReleasedNumber){
           }
         console.log(trailerData);
         let trailer = trailerData.linkEmbed
-        console.log(`Trailer Embed Link${trailer}`)
+        console.log(`Trailer Embed Link: ${trailer}`)
 
         movieTrailer.innerHTML = `
-        <iframe src="${trailer}" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+        <h2>The Trailer</h2>
+        <iframe src="${trailer}" width="900px" height="900px" frameborder="0" allowfullscreen></iframe>
         `;
         }
-        
         fetchTrailer();
 
 
-        
-
+        // A function for fetching and rendering the movie Information PNG
+        async function fetchReport(){
+            let reportResponse = await fetch(fetchMovieReportUrl);
+            if (!reportResponse.ok) {
+                throw new Error(`Unable to fetch movie report. Response status: ${reportResponse.status}`);
+              }
+            let reportBlob = await reportResponse.blob();
+            let reportUrl = URL.createObjectURL(reportBlob);
+            console.log(`Report PNG: ${reportUrl}`)
+            movieInfo.innerHTML = `
+            <img src="${reportUrl}" alt="The movie report" width="auto">`
+        }
+        fetchReport();
     } catch (error) {
         alert(`Error fetching data : ${error.message}`);
     };
