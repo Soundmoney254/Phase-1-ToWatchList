@@ -10,6 +10,7 @@ const definiteWatch = document.querySelector("#definiteWatchList");
 const maybeWatch = document.querySelector("#maybeWatchList");
 const notMyTaste = document.querySelector("#notMyTasteList");
 const savedMovieList = JSON.parse(localStorage.getItem("movieList"));
+const radioButtons = document.querySelectorAll("input[type='radio']");
 const apiKey = "k_0pjrunt0";
 
 //A function for rendering a movies Info after fetching the data
@@ -66,6 +67,7 @@ async function fetchAndDisplay (movieNameString, yearReleasedNumber){
             console.log(`Report PNG: ${reportUrl}`)
             movieInfo.innerHTML = `
             <img src="${reportUrl}" alt="The movie report" width="auto">`
+            alert("Movie Info loaded successfully scroll down to view")
         }
         fetchReport();
     } catch (error) {
@@ -88,7 +90,6 @@ searchForm.addEventListener("submit", event => {
 function renderWatchlist(){
     console.log("addToWatchlist Clicked")
     let rank;
-    const radioButtons = document.querySelectorAll("input[type='radio']");
     radioButtons.forEach(button => {
         if (button.checked) {
             rank = button.value;
@@ -97,7 +98,18 @@ function renderWatchlist(){
     });
         let appendMovieName = movieNameInput.value;
         let newMovieList = document.createElement('li');
-        newMovieList.textContent = appendMovieName;
+        let watchedButton = document.createElement('button');
+        watchedButton.classList.add("button");
+        let binButton = document.createElement('button');
+        binButton.classList.add("button");
+        
+        watchedButton.textContent = "Watched";
+        binButton.textContent = "Bin";
+        newMovieList.textContent = `${appendMovieName}     `;
+
+        newMovieList.appendChild(watchedButton);
+        newMovieList.appendChild(binButton);
+
         console.log(rank);
         console.log(newMovieList);
         
@@ -130,11 +142,12 @@ function renderWatchlist(){
 addToWatchlist.addEventListener("click",renderWatchlist);
 
 //Check for listed movies stored in local storage
-if (savedMovieList) {
-    definiteWatch.innerHTML = savedMovieList.definiteWatch;
-    maybeWatch.innerHTML = savedMovieList.maybeWatch;
-    notMyTaste.innerHTML = savedMovieList.notMyTaste;
-}
-//Delete Movies stored in localstorege
-// localStorage.removeItem("movieList");
+// if (savedMovieList) {
+//     definiteWatch.innerHTML = savedMovieList.definiteWatch;
+//     maybeWatch.innerHTML = savedMovieList.maybeWatch;
+//     notMyTaste.innerHTML = savedMovieList.notMyTaste;
+// }
+
+// //Delete Movies stored in localstorege
+localStorage.removeItem("movieList");
 });

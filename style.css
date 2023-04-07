@@ -96,3 +96,13 @@ hr {
 #bin {
   float: right;
 }
+
+.button {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: greenyellow;
+  color: black;
+  border: solid black 1px;
+  border-radius: 5px;
+  cursor: pointer;
+}
