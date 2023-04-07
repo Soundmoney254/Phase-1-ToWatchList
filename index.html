@@ -13,19 +13,33 @@
         <label for="yearReleased">Year Released:</label>
         <input type="number" id="yearReleased" name="yearReleased" max="2130">
         <button id="submit" type="submit">Search</button>
-        <label for="sortOrder">Personal Rank:</label>
-        <select id="sortOrder">
-          <option value="definiteWatch">Definite Watch</option>
-          <option value="maybeWatch">Maybe Watch</option>
-          <option value="bin">Not my taste</option>
-        </select>
+        <fieldset>
+          <legend>Personal Rank:</legend>
+          <input type="radio" id="definiteWatch" name="rankMovies" value="definiteWatch">
+          <label for="definiteWatch">Definite Watch</label>
+        
+          <input type="radio" id="maybeWatch" name="rankMovies" value="maybeWatch">
+          <label for="maybeWatch">Maybe Watch</label>
+        
+          <input type="radio" id="notMyTaste" name="rankMovies" value="notMyTaste">
+          <label for="notMyTaste">Not my taste</label>
+        </fieldset>        
         <button id="addToWatchlist" type="button">Add to watchList</button>
       </form>
     </div>
 
     <div id="watchList">
       <h2>Watch List</h2>
-      <ul id="movieList">
+      <ul id="definiteWatchList">
+        <li>Movies to definately watch</li>
+        <!-- Movies come here -->
+      </ul>
+      <ul id="maybeWatchList">
+        <li>Movies to maybe watch</li>
+        <!-- Movies come here -->
+      </ul>
+      <ul id="notMyTasteList">
+        <li>Movies not in my tastes</li>
         <!-- Movies come here -->
       </ul>
     </div>

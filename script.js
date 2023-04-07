@@ -6,11 +6,11 @@ const movieInfo = document.querySelector("#movieInfo");
 const searchForm = document.querySelector("#searchForm");
 const movieTrailer = document.querySelector("#movieTrailer");
 const addToWatchlist = document.querySelector("#addToWatchlist");
-const rankMovies = document.querySelector("#rankMovies");
-const definiteWatch = document.querySelector("#definiteWatch");
-const maybeWatch = document.querySelector("#maybeWatch");
-const notMyTaste = document.querySelector("#notMyTaste");
-const apiKey = "k_ui12w03w";
+const definiteWatch = document.querySelector("#definiteWatchList");
+const maybeWatch = document.querySelector("#maybeWatchList");
+const notMyTaste = document.querySelector("#notMyTasteList");
+const savedMovieList = JSON.parse(localStorage.getItem("movieList"));
+const apiKey = "k_0pjrunt0";
 
 //A function for rendering a movies Info after fetching the data
 async function fetchAndDisplay (movieNameString, yearReleasedNumber){
@@ -19,20 +19,7 @@ async function fetchAndDisplay (movieNameString, yearReleasedNumber){
     const fetchUrl = `https://imdb-api.com/en/API/SearchMovie/${apiKey}/${movieName} ${yearReleased}`
     console.log(fetchUrl);
 
-    //An event listener to add a movie to the watchlist
-    addToWatchlist.addEventListener("click",() => {
-        console.log("addToWatchlist Clicked")
-        const rank = rankMovies.value;
-    
-        if (rank === "definiteWatch") {
-            definiteWatch.innerHTML = `<li>${movieName}</li>`;
-        } else if (rank === "maybeWatch") {
-            maybeWatch.innerHTML = `<li>${movieName}</li>`;
-        } else if (rank === "notMyTaste") {
-            notMyTaste.innerHTML = `<li>${movieName}</li>`;
-        }
-    });
-
+    //Starting a fetch for 
     try{
         const response = await fetch(fetchUrl);
         const data = await response.json();
@@ -81,7 +68,6 @@ async function fetchAndDisplay (movieNameString, yearReleasedNumber){
             <img src="${reportUrl}" alt="The movie report" width="auto">`
         }
         fetchReport();
-
     } catch (error) {
         alert(`Error fetching data : ${error.message}`);
     };
@@ -95,6 +81,60 @@ searchForm.addEventListener("submit", event => {
     form.reset();
   });
 
-  // Test the functions with a movie/Placeholder
-  fetchAndDisplay("Top Gun: Maverick", 2022);
+// Test the functions with a movie/Placeholder
+//   fetchAndDisplay("Top Gun: Maverick", 2022);
+
+//A function for rendering movie data to the watchlist div
+function renderWatchlist(){
+    console.log("addToWatchlist Clicked")
+    let rank;
+    const radioButtons = document.querySelectorAll("input[type='radio']");
+    radioButtons.forEach(button => {
+        if (button.checked) {
+            rank = button.value;
+        }
+        return rank;
+    });
+        let appendMovieName = movieNameInput.value;
+        let newMovieList = document.createElement('li');
+        newMovieList.textContent = appendMovieName;
+        console.log(rank);
+        console.log(newMovieList);
+        
+        if (rank === "definiteWatch") {
+            definiteWatch.appendChild(newMovieList);
+            console.log("appended child to definiteWatch")
+        } else if (rank === "maybeWatch") {
+            maybeWatch.appendChild(newMovieList);
+            console.log("appended child to maybeWatch");
+        } else if (rank === "notMyTaste") {
+            notMyTaste.appendChild(newMovieList);
+            console.log("appended child to notMyTaste");
+        }
+
+        //Saving the movie list to local storage
+        function saveLists() {
+        const movieList = {
+        definiteWatch: definiteWatch.innerHTML,
+        maybeWatch: maybeWatch.innerHTML,
+        notMyTaste: notMyTaste.innerHTML
+        };
+        console.log(movieList);
+        localStorage.setItem("movieList", JSON.stringify(movieList));
+        console.log(`saved to local storage ${movieList}`);
+        }
+        saveLists();
+}
+
+//An event listener to add a movie to the watchlist
+addToWatchlist.addEventListener("click",renderWatchlist);
+
+//Check for listed movies stored in local storage
+if (savedMovieList) {
+    definiteWatch.innerHTML = savedMovieList.definiteWatch;
+    maybeWatch.innerHTML = savedMovieList.maybeWatch;
+    notMyTaste.innerHTML = savedMovieList.notMyTaste;
+}
+//Delete Movies stored in localstorege
+// localStorage.removeItem("movieList");
 });
