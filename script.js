@@ -15,28 +15,27 @@ const savedMovieList = JSON.parse(localStorage.getItem("movieList"));
 const alredyWatched = JSON.parse(localStorage.getItem("alredyWatched"));
 const savedBinList = JSON.parse(localStorage.getItem("savedBinList"));
 const radioButtons = document.querySelectorAll("input[type='radio']");
-const apiKey = "k_k7rhb843";
+const apiKey = "k_3huvxu40";
 
 function addEventListenersToButtons() {
     const classBinButtons = document.querySelectorAll(".binButton");
     const classWatchedButtons = document.querySelectorAll(".watchedButton");
   
     classBinButtons.forEach(button => {
-      button.addEventListener("click", () => {
+      button.addEventListener("click", function() {
         const listItem = this.parentNode;
         listItem.parentNode.removeChild(listItem);
-        bin.appendChild(listItem);
+        binList.appendChild(listItem);
         saveLists();
         saveBinList()
       });
     });
   
     classWatchedButtons.forEach(button => {
-      button.addEventListener("click", () => {
+      button.addEventListener("click", function() {
         const listItem = this.parentNode;
         listItem.parentNode.removeChild(listItem);
-        bin.appendChild(listItem);
-        watched.appendChild(listItem);
+        watchedList.appendChild(listItem);
         saveLists();
         saveAlredyWatched();
       });
@@ -170,7 +169,7 @@ addToWatchlist.addEventListener("click",renderWatchlist);
 binButton.addEventListener("click",  () => {
   const listItem = this.parentNode;
   listItem.parentNode.removeChild(listItem);
-  bin.appendChild(listItem);
+  binList.appendChild(listItem);
   saveLists();
 });
 
@@ -178,8 +177,7 @@ binButton.addEventListener("click",  () => {
 watchedButton.addEventListener("click", () => {
   const listItem = this.parentNode;
   listItem.parentNode.removeChild(listItem);
-  bin.appendChild(listItem);
-  watched.appendChild(listItem);
+  watchedList.appendChild(listItem);
   saveLists();
 });   
 }
