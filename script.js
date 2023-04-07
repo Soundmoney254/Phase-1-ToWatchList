@@ -15,7 +15,7 @@ const savedMovieList = JSON.parse(localStorage.getItem("movieList"));
 const alredyWatched = JSON.parse(localStorage.getItem("alredyWatched"));
 const savedBinList = JSON.parse(localStorage.getItem("savedBinList"));
 const radioButtons = document.querySelectorAll("input[type='radio']");
-const apiKey = "pk_wzqzul3kiqp3vwpt7";
+const apiKey = "k_k7rhb843";
 
 function addEventListenersToButtons() {
     const classBinButtons = document.querySelectorAll(".binButton");
