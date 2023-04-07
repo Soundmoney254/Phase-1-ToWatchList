@@ -13,18 +13,18 @@
         <label for="yearReleased">Year Released:</label>
         <input type="number" id="yearReleased" name="yearReleased" max="2130">
         <button id="submit" type="submit">Search</button>
+        <label for="sortOrder">Personal Rank:</label>
+        <select id="sortOrder">
+          <option value="definiteWatch">Definite Watch</option>
+          <option value="maybeWatch">Maybe Watch</option>
+          <option value="bin">Not my taste</option>
+        </select>
         <button id="addToWatchlist" type="button">Add to watchList</button>
       </form>
     </div>
 
     <div id="watchList">
       <h2>Watch List</h2>
-      <label for="sortOrder">Add to Category:</label>
-      <select id="sortOrder">
-        <option value="definiteWatch">Definite Watch</option>
-        <option value="maybeWatch">Maybe Watch</option>
-        <option value="bin">Bin</option>
-      </select>
       <ul id="movieList">
         <!-- Movies come here -->
       </ul>
