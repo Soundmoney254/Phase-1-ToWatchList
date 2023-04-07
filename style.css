@@ -1,6 +1,6 @@
 body {
     font-family: Tahoma, sans-serif;
-    margin: 84px 84px;
+    margin: 50px 50px;
   }
 
   .header {
@@ -44,14 +44,14 @@ body {
   height: auto;
 }
 
-#movieInfo{
-  width: 1100px;
+#movieInfo, #movieTrailer{
+  width: 600;
   height: auto;
   padding: 5px;
   text-align: center;
   background-color: rgb(153, 151, 148);
 }
 
-#watchList, #movieInfo {
+#movieTrailer, #movieInfo {
   display: inline-block;
 }
