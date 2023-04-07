@@ -20,7 +20,7 @@ async function fetchAndDisplay (movieNameString, yearReleasedNumber){
     const fetchUrl = `https://imdb-api.com/en/API/SearchMovie/${apiKey}/${movieName} ${yearReleased}`
     console.log(fetchUrl);
 
-    //Starting a fetch for 
+    //Starting a fetch for the movie ID
     try{
         const response = await fetch(fetchUrl);
         const data = await response.json();
@@ -96,46 +96,67 @@ function renderWatchlist(){
         }
         return rank;
     });
-        let appendMovieName = movieNameInput.value;
-        let newMovieList = document.createElement('li');
-        let watchedButton = document.createElement('button');
-        watchedButton.classList.add("button");
-        let binButton = document.createElement('button');
-        binButton.classList.add("button");
-        
-        watchedButton.textContent = "Watched";
-        binButton.textContent = "Bin";
-        newMovieList.textContent = `${appendMovieName}     `;
+    let appendMovieName = movieNameInput.value;
+    let newMovieList = document.createElement('li');
+    let watchedButton = document.createElement('button');
+    watchedButton.classList.add("button");
+    let binButton = document.createElement('button');
+    binButton.classList.add("button");
+    
+    watchedButton.textContent = "Watched";
+    binButton.textContent = "Bin";
+    newMovieList.textContent = `${appendMovieName}     `;
 
-        newMovieList.appendChild(watchedButton);
-        newMovieList.appendChild(binButton);
+    newMovieList.appendChild(watchedButton);
+    newMovieList.appendChild(binButton);
 
-        console.log(rank);
-        console.log(newMovieList);
-        
-        if (rank === "definiteWatch") {
-            definiteWatch.appendChild(newMovieList);
-            console.log("appended child to definiteWatch")
-        } else if (rank === "maybeWatch") {
-            maybeWatch.appendChild(newMovieList);
-            console.log("appended child to maybeWatch");
-        } else if (rank === "notMyTaste") {
-            notMyTaste.appendChild(newMovieList);
-            console.log("appended child to notMyTaste");
-        }
+    console.log(rank);
+    console.log(newMovieList);
+    
+    if (rank === "definiteWatch") {
+        definiteWatch.appendChild(newMovieList);
+        console.log("appended child to definiteWatch")
+    } else if (rank === "maybeWatch") {
+        maybeWatch.appendChild(newMovieList);
+        console.log("appended child to maybeWatch");
+    } else if (rank === "notMyTaste") {
+        notMyTaste.appendChild(newMovieList);
+        console.log("appended child to notMyTaste");
+    }
 
-        //Saving the movie list to local storage
-        function saveLists() {
-        const movieList = {
-        definiteWatch: definiteWatch.innerHTML,
-        maybeWatch: maybeWatch.innerHTML,
-        notMyTaste: notMyTaste.innerHTML
-        };
-        console.log(movieList);
-        localStorage.setItem("movieList", JSON.stringify(movieList));
-        console.log(`saved to local storage ${movieList}`);
-        }
-        saveLists();
+    //Saving the movie list to local storage
+    function saveLists() {
+    const movieList = {
+    definiteWatch: definiteWatch.innerHTML,
+    maybeWatch: maybeWatch.innerHTML,
+    notMyTaste: notMyTaste.innerHTML
+    };
+    console.log(movieList);
+    localStorage.setItem("movieList", JSON.stringify(movieList));
+    console.log(`saved to local storage ${movieList}`);
+    }
+    saveLists();
+
+    //An event listener to add a movie to the watchlist
+addToWatchlist.addEventListener("click",renderWatchlist);
+
+// An event listener for the bin button
+binButton.addEventListener("click", function() {
+  const listItem = this.parentNode;
+  listItem.parentNode.removeChild(listItem);
+  bin.appendChild(listItem);
+  saveLists();
+});
+
+// An event listener for the watched button
+watchedButton.addEventListener("click", function() {
+  const listItem = this.parentNode;
+  listItem.parentNode.removeChild(listItem);
+  bin.appendChild(listItem);
+  watched.appendChild(listItem);
+  saveLists();
+});
+    
 }
 
 //An event listener to add a movie to the watchlist
@@ -150,4 +171,6 @@ addToWatchlist.addEventListener("click",renderWatchlist);
 
 // //Delete Movies stored in localstorege
 localStorage.removeItem("movieList");
+
+
 });
