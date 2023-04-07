@@ -3,10 +3,20 @@ body {
     margin: 20px 20px;
   }
 
+  div {
+    border: 1px solid black;
+  }
+
   .header {
     background-color: lightblue;
     padding: 20px 20px;
     text-align: center;
+  }
+
+  hr {
+    border: none;
+    border-top: 2px solid black;
+    margin: 20px 0;
   }
 
   input {
@@ -41,16 +51,28 @@ body {
   text-align: center;
   padding: 5px;
   width: 300px;
-  height: auto;
+  height: 900px;
+  float: left;
 }
 
-#movieInfo, #movieTrailer{
+#movieTrailer{
+  width: 920px;
+  height: auto;
+  padding: 5px;
+  text-align: center;
+  background-color: rgb(153, 151, 148);
+  float: left;
+}
+
+#movieInfo {
   width: 1000px;
   height: auto;
   padding: 5px;
   text-align: center;
   background-color: rgb(153, 151, 148);
+  margin-top: 15px;
 }
+
 
 #movieTrailer, #watchList {
   display: inline-block;
