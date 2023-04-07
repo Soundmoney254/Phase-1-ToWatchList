@@ -4,7 +4,7 @@ const yearReleasedInput = document.querySelector("#yearReleased");
 const movieInfo = document.querySelector("#movieInfo");
 const searchForm = document.querySelector("#searchForm");
 const movieTrailer = document.querySelector("#movieTrailer");
-const apiKey = 'k_q46p3x9h';
+const apiKey = 'k_ui12w03w';
 
 //A function for rendering a movies Info after fetching the data
 async function fetchAndDisplay (movieNameString, yearReleasedNumber){
@@ -71,9 +71,9 @@ searchForm.addEventListener("submit", event => {
     event.preventDefault();
     const movieName = movieNameInput.value;
     const yearReleased = yearReleasedInput.value;
-
     fetchAndDisplay(movieName,yearReleased);
+    form.reset();
   });
 
-  // Test the function with a movie
+  // Test the function with a movie/Placeholder
   fetchAndDisplay("Top Gun: Maverick", 2022);

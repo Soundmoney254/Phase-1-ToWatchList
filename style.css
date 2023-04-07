@@ -12,13 +12,7 @@ body {
     padding: 20px 20px;
     text-align: center;
   }
-
-  hr {
-    border: none;
-    border-top: 2px solid black;
-    margin: 20px 0;
-  }
-
+  
   input {
     padding: 2px;
     border: 2px solid gray;
@@ -36,7 +30,7 @@ body {
     border-color: white;
   }
 
-#submit, #clear {
+#submit, #addToWatchlist {
   display: inline-block;
   padding: 5px 10px;
   background-color: greenyellow;
@@ -51,17 +45,17 @@ body {
   text-align: center;
   padding: 5px;
   width: 300px;
-  height: 900px;
+  height: 1080px;
   float: left;
 }
 
 #movieTrailer{
-  width: 920px;
-  height: auto;
+  width: 1050px;
+  height: 1080px;
   padding: 5px;
   text-align: center;
   background-color: rgb(153, 151, 148);
-  float: left;
+  float: right;
 }
 
 #movieInfo {
@@ -71,9 +65,34 @@ body {
   text-align: center;
   background-color: rgb(153, 151, 148);
   margin-top: 15px;
+  clear: both;
 }
-
 
 #movieTrailer, #watchList {
   display: inline-block;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid black;
+  margin: 20px 0;
+}
+
+#watched, #bin{
+  background-color: burlywood;
+  text-align: center;
+  padding: 5px;
+  width: 300px;
+  height: 500px;
+}
+#watched, #bin{
+  display: inline-block;
+}
+
+#watched  {
+  float: left;
+}
+
+#bin {
+  float: right;
 }

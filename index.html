@@ -13,7 +13,7 @@
         <label for="yearReleased">Year Released:</label>
         <input type="number" id="yearReleased" name="yearReleased" max="2130">
         <button id="submit" type="submit">Search</button>
-        <button id="clear" type="button">Clear</button>
+        <button id="addToWatchlist" type="button">Add to watchList</button>
       </form>
     </div>
 
@@ -34,14 +34,29 @@
       <h2>Trailer</h2>
         <!-- Trailer comes here -->
     </div>
-
-
+    <br>
+    <h2><br><br><br>Movie Details</h2>
+    <hr>
     <div id="movieInfo"> 
-      <h2>Movie Details</h2>
       <p>Replace Movie Info here</p>
         <!-- Synopsis comes here -->
     </div>
 
+    <hr>
+    
+    <div id="watched">
+      <h2>Watched Movies</h2>
+      <ul id="watchedList">
+        <!-- Movies come here -->
+      </ul>
+    </div>
+
+    <div id="bin">
+      <h2>Binned Movies</h2>
+      <ul id="binList">
+        <!-- Movies come here -->
+      </ul>
+    </div>
 
     <script src="./script.js"></script>
   </body>
