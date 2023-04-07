@@ -106,7 +106,7 @@ hr {
   float: right;
 }
 
-.button, .binButton, .watchedButton {
+.deleteButtons, .binButton, .watchedButton {
   display: inline-block;
   padding: 5px 10px;
   background-color: greenyellow;
