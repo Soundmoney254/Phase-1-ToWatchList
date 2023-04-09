@@ -6,16 +6,16 @@ const movieInfo = document.querySelector("#movieInfo");
 const searchForm = document.querySelector("#searchForm");
 const movieTrailer = document.querySelector("#movieTrailer");
 const addToWatchlist = document.querySelector("#addToWatchlist");
-const definiteWatch = document.querySelector("#definiteWatchList");
-const maybeWatch = document.querySelector("#maybeWatchList");
-const notMyTaste = document.querySelector("#notMyTasteList");
+const definiteWatchList = document.querySelector("#definiteWatchList");
+const maybeWatchList = document.querySelector("#maybeWatchList");
+const notMyTasteList = document.querySelector("#notMyTasteList");
 const watchedList = document.querySelector("#watchedList");
 const binList = document.querySelector("#binList");
 const savedMovieList = JSON.parse(localStorage.getItem("movieList"));
 const alredyWatched = JSON.parse(localStorage.getItem("alredyWatched"));
-const savedBinList = JSON.parse(localStorage.getItem("savedBinList"));
+const savedBinList = JSON.parse(localStorage.getItem("binListSaved"));
 const radioButtons = document.querySelectorAll("input[type='radio']");
-const apiKey = "k_3huvxu40";
+const apiKey = "k_k7rhb843";
 
 function addEventListenersToButtons() {
     const classBinButtons = document.querySelectorAll(".binButton");
@@ -110,7 +110,7 @@ searchForm.addEventListener("submit", event => {
     const movieName = movieNameInput.value;
     const yearReleased = yearReleasedInput.value;
     fetchAndDisplay(movieName,yearReleased);
-    form.reset();
+    searchForm.reset();
   });
 
 // Test the functions with a movie/Placeholder
@@ -149,33 +149,33 @@ function renderWatchlist(){
     console.log(newMovieList);
     
     if (rank === "definiteWatch") {
-        definiteWatch.appendChild(newMovieList);
+        definiteWatchList.appendChild(newMovieList);
         console.log("appended child to definiteWatch")
     } else if (rank === "maybeWatch") {
-        maybeWatch.appendChild(newMovieList);
+        maybeWatchList.appendChild(newMovieList);
         console.log("appended child to maybeWatch");
     } else if (rank === "notMyTaste") {
-        notMyTaste.appendChild(newMovieList);
+        notMyTasteList.appendChild(newMovieList);
         console.log("appended child to notMyTaste");
     }
 
     saveLists();
-    form.reset();
+    searchForm.reset();
 
 //An event listener to add a movie to the watchlist button
 addToWatchlist.addEventListener("click",renderWatchlist);
 
 // An event listener for the bin button
-binButton.addEventListener("click",  () => {
-  const listItem = this.parentNode;
+binButton.addEventListener("click",  event => {
+  const listItem = event.target.parentNode;
   listItem.parentNode.removeChild(listItem);
   binList.appendChild(listItem);
   saveLists();
 });
 
 // An event listener for the watched button
-watchedButton.addEventListener("click", () => {
-  const listItem = this.parentNode;
+watchedButton.addEventListener("click", event => {
+  const listItem = event.target.parentNode;
   listItem.parentNode.removeChild(listItem);
   watchedList.appendChild(listItem);
   saveLists();
@@ -184,44 +184,44 @@ watchedButton.addEventListener("click", () => {
 //An event listener to add a movie to the watchlist
 addToWatchlist.addEventListener("click",renderWatchlist);
 
+//Saving the movie list to local storage
+function saveLists() {
+    const movieList = {
+    definiteWatchSaved: definiteWatchList.innerHTML,
+    maybeWatchSaved: maybeWatchList.innerHTML,
+    notMyTasteSaved: notMyTasteList.innerHTML
+    };
+    console.log(movieList);
+    localStorage.setItem("movieList", JSON.stringify(movieList));
+    console.log(`saved to local storage ${movieList}`);
+}
+
 
 //A function to save the already watched to local storage
   function saveAlredyWatched() {
-    const alredyWatched = {
-        watchedList: watchedList.innerHTML,
+    const alredyWatchedObject = {
+        watchedListSaved: watchedList.innerHTML,
     };
-    localStorage.setItem("alredyWatched", JSON.stringify(alredyWatched));
+    localStorage.setItem("alredyWatched", JSON.stringify(alredyWatchedObject));
   }
   saveAlredyWatched();
 
   //A function to save the binlist to local storage
   function saveBinList() {
-    const   saveBinList = {
+    const   binListObject = {
       bin: binList.innerHTML,
     };
-    localStorage.setItem("savedBinList", JSON.stringify(saveBinList));
+    localStorage.setItem("binListSaved", JSON.stringify(binListObject));
   }
   saveBinList();
 
   //Check for listed movies stored in local storage
-if (savedMovieList || alredyWatched || savedbinList) {
-    definiteWatch.innerHTML = savedMovieList.definiteWatch;
-    maybeWatch.innerHTML = savedMovieList.maybeWatch;
-    notMyTaste.innerHTML = savedMovieList.notMyTaste;
-    binList.innerHTML = savedBinList.savedbinList;
+if (savedMovieList || alredyWatched || savedBinList) {
+    definiteWatchList.innerHTML = savedMovieList.definiteWatchSaved;
+    maybeWatchList.innerHTML = savedMovieList.maybeWatchSaved;
+    notMyTasteList.innerHTML = savedMovieList.notMyTasteSaved;
+    binList.innerHTML = savedBinList.binListSaved;
     watchedList.innerHTML = alredyWatched.watchedList;
 };
-
-    //Saving the movie list to local storage
-    function saveLists() {
-        const movieList = {
-        definiteWatch: definiteWatch.innerHTML,
-        maybeWatch: maybeWatch.innerHTML,
-        notMyTaste: notMyTaste.innerHTML
-        };
-        console.log(movieList);
-        localStorage.setItem("movieList", JSON.stringify(movieList));
-        console.log(`saved to local storage ${movieList}`);
-    }
 
 });
