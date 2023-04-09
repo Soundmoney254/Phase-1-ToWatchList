@@ -14,6 +14,8 @@ const binList = document.querySelector("#binList");
 const radioButtons = document.querySelectorAll("input[type='radio']");
 const apiKey = "k_k7rhb843";
 
+retrieveLists(); // Retrive movie lists stored in local storage
+
 //A function for rendering a movies Info after fetching the data
 async function fetchAndDisplay (movieNameString, yearReleasedNumber){
     let movieName = movieNameString;
@@ -194,7 +196,7 @@ function saveLists() {
   }
 
 //Check for listed movies stored in local storage
-function retrieveLists(){
+async function retrieveLists(){
     const savedMovieList = JSON.parse(localStorage.getItem("movieList"));
     const savedAlredyWatched = JSON.parse(localStorage.getItem("watchedListSaved"));
     const savedBinList = JSON.parse(localStorage.getItem("binList"));
@@ -217,6 +219,18 @@ function retrieveLists(){
         alert(`Error retrieving the saved movie lists from local storage: ${error.message}`);
     };
 }
-retrieveLists();
 
+    // An event listener for the delete buttons in the bin and watched lists
+    const deletebin = document.querySelector("#deletebin");
+    const deleteWatched = document.querySelector("#deleteWatched");
+
+    deletebin.addEventListener("click", () => {
+        binList.innerHTML = '';
+        saveBinList();
+    })
+
+    deleteWatched.addEventListener("click", () => {
+        watchedList.innerHTML = '';
+        saveAlredyWatched();
+    })
 });

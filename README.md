@@ -52,7 +52,7 @@
 * Open the files on your code editor.
 * Start a live server on the index.html file.
 * Open the index.html file in a web browser.
-* If you encounter an error fetching because of a rate limit Use the following alternative api keys by replacing them in the variable on line 18 of the javascript file.
+* If you encounter an error fetching because of a rate limit Use the following alternative api keys by replacing them in the variable on line 15 of the javascript file.
  ```sh
     apiKeys:
     k_k7rhb843
@@ -80,7 +80,7 @@
 ## Limitations
 * The web page does not persist data to a database and hence clearing the cookies loses the list data.
 * IMDB's free api keys rate limit to 100 fetch requests a day for the free version. 
-* Use the following alternative api keys by replacing them in the variable on line 18 of the javascript file.
+* Use the following alternative api keys by replacing them in the variable on line 15 of the javascript file.
  ```sh
     api Keys:
 k_k7rhb843
