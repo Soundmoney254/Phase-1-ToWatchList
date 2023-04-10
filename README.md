@@ -54,7 +54,7 @@
 * Open the index.html file in a web browser.
 * If you encounter an error fetching because of a rate limit Use the following alternative api keys by replacing them in the variable on line 15 of the javascript file.
  ```sh
-    apiKeys:
+    api Keys:
 
     k_k7rhb843
     k_73iqyddm
@@ -88,9 +88,10 @@
 * Use the following alternative api keys by replacing them in the variable on line 15 of the javascript file.
  ```sh
     api Keys:
-k_k7rhb843
-k_ui12w03w
-k_q46p3x9h
+
+    k_k7rhb843
+    k_73iqyddm
+    
    ```
 
 * If you need to create a personal api key follow this link "https://imdb-api.com/Identity/Account/Register" to register and create an apikey and copy it from your profile to line 17
