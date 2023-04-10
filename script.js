@@ -12,7 +12,7 @@ const notMyTasteList = document.querySelector("#notMyTasteList");
 const watchedList = document.querySelector("#watchedList");
 const binList = document.querySelector("#binList");
 const radioButtons = document.querySelectorAll("input[type='radio']");
-const apiKey = "k_73iqyddm";
+const apiKey = "k_k7rhb843";
 const loading = document.querySelector("#loading");
 
 retrieveLists(); // Retrive movie lists stored in local storage

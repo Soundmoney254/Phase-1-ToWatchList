@@ -40,10 +40,16 @@
 ## Getting Started/Setup
 ### Installation
 
-1. Clone the repo
-   ```sh
-     https://github.com/Soundmoney254/Phase-1-ToWatchList
-   ```
+
+1. Use the netlify live link
+  ```sh
+  https://main--thunderous-churros-1c7f0c.netlify.app/
+  ```
+
+2. Clone the repo
+```sh
+https://github.com/Soundmoney254/Phase-1-ToWatchList
+```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
