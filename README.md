@@ -55,15 +55,20 @@
 * If you encounter an error fetching because of a rate limit Use the following alternative api keys by replacing them in the variable on line 15 of the javascript file.
  ```sh
     apiKeys:
+
     k_k7rhb843
-    k_ui12w03w
-    k_q46p3x9h
+    k_73iqyddm
+    
    ```
 * A user can see the placeholder movies' trailer and detailed movie report with all the important information.
-* Enter a movie in the search input accompanied with its release year like this examples.
-      ```sh
+* Enter a movie name in the Movie Name input accompanied with its release year in the year released input.
+* You can use this movies as a test but the website can search any movie publicly available i IMDBs' database which is most movies
+
+    ```sh
       inception 2010
       titanic 1997
+      sharper 2023
+      avatar 2009
    ```
 * After fetching the website will render a movies trailer and it's movie report.
 * From there a user can decide to add the movie to their watched list by typing the movies name in the input field, selecting a ranking category and clicking the 'Add to watchlist' button.
