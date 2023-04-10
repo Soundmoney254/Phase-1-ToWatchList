@@ -13,7 +13,6 @@ const watchedList = document.querySelector("#watchedList");
 const binList = document.querySelector("#binList");
 const radioButtons = document.querySelectorAll("input[type='radio']");
 const apiKey = "k_k7rhb843";
-const loading = document.querySelector("#loading");
 
 retrieveLists(); // Retrive movie lists stored in local storage
 
@@ -59,7 +58,6 @@ async function fetchAndDisplay (movieNameString, yearReleasedNumber){
         `;
         }
         await fetchTrailer();
-        loading.setAttribute("hidden", "hidden");
 
         // A function for fetching and rendering the movie Information PNG
         async function fetchReport(){
@@ -86,7 +84,6 @@ searchForm.addEventListener("submit", event => {
     const yearReleased = yearReleasedInput.value;
     fetchAndDisplay(movieName,yearReleased);
     searchForm.reset();
-    loading.setAttribute("hidden", '');
   });
 
 // Test the functions with a movie/Placeholder
