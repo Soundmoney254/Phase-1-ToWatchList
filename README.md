@@ -68,7 +68,7 @@ https://github.com/Soundmoney254/Phase-1-ToWatchList
    ```
 * A user can see the placeholder movies' trailer and detailed movie report with all the important information.
 * Enter a movie name in the Movie Name input accompanied with its release year in the year released input.
-* You can use this movies as a test but the website can search any movie publicly available i IMDBs' database which is most movies
+* You can use this movies as a test but the website can search any movie publicly available in IMDBs' database which is most movies
 
     ```sh
       inception 2010
@@ -91,15 +91,6 @@ https://github.com/Soundmoney254/Phase-1-ToWatchList
 ## Limitations
 * The web page does not persist data to a database and hence clearing the cookies loses the list data.
 * IMDB's free api keys rate limit to 100 fetch requests a day for the free version. 
-* Use the following alternative api keys by replacing them in the variable on line 15 of the javascript file.
- ```sh
-    api Keys:
-
-    k_k7rhb843
-    k_73iqyddm
-    
-   ```
-
 * If you need to create a personal api key follow this link "https://imdb-api.com/Identity/Account/Register" to register and create an apikey and copy it from your profile to line 17
 
 <!-- CONTRIBUTING -->
