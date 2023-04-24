@@ -47,7 +47,7 @@ body {
 #watchList {
   background-color: burlywood;
   padding: 5px;
-  width: 300px;
+  width: 20%;
   height: 1080px;
   float: left;
 }
@@ -58,7 +58,7 @@ body {
 }
 
 #movieTrailer{
-  width: 1050px;
+  width: 78%;
   height: 1080px;
   padding: 5px;
   text-align: center;
@@ -67,7 +67,7 @@ body {
 }
 
 #movieInfo {
-  width: 1300px;
+  width: 78%;
   height: auto;
   padding: 5px;
   text-align: center;
@@ -90,11 +90,11 @@ hr {
   background-color: burlywood;
   text-align: left;
   padding: 5px;
-  width: 300px;
+  width: 20%;
   height: 500px;
 }
 
-#watched, #bin{
+#watched, #movieInfo{
   display: inline-block;
 }
 
@@ -103,7 +103,7 @@ hr {
 }
 
 #bin {
-  float: right;
+  float: left;
 }
 
 .deleteButtons, .binButton, .watchedButton {
